@@ -3,6 +3,7 @@ import {getDownloadURL, getStorage,ref, uploadBytesResumable} from 'firebase/sto
 import {app} from '../Firebase';
 import {updateUserStart,updateUserFailure,updateUserSuccess,deleteUserFailure,deleteUserSuccess,deleteUserStart, signOutUserStart, signOutUserSuccess, signOutUserFailure} from '../redux/user/userSlice';
 import { useDispatch,useSelector } from 'react-redux';
+import {Link} from 'react-router-dom';
 export default function Profile() {
   const fileRef=useRef(null);
   const dispatch=useDispatch();
@@ -120,6 +121,7 @@ export default function Profile() {
         <input type="email" placeholder='email' defaultValue={currentUser.email} id="email" className='border p-3 rounded-lg'/>
         <input type="password" placeholder='password' id="password" className='border p-3 rounded-lg'/>
         <button className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'>{loading ? "loading... ": "update"}</button>
+        <Link className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95" to={"/create-listing"}>Create Listing</Link>
       </form>
 
       <div className='flex justify-between mt-5'>
