@@ -15,7 +15,7 @@ export default function ListingItem({listing}) {
       <p className='text-sm text-gray-600 line-clamp-2'>{listing.description}</p>
       <p className='text-slate-500 mt-2 font-semibold'>
         $
-        {listing.offer ?listing.discountPrice && 
+        {listing.offer ?
           listing.discountPrice.toLocaleString('en-US'):listing.regularPrice.toLocaleString('en-US')
         }
         {listing.type==='rent' && ' / month'}
@@ -25,7 +25,7 @@ export default function ListingItem({listing}) {
           {listing.bedrooms >1 ? `${listing.bedrooms} beds`:`${listing.bedrooms} bed`}
         </div>
         <div className="font-bold text-xs">
-          {listing.bathrooms >1 ? `${listing.bathrooms} baths`:`${listing.bathrooms} bath`}
+          {listing.bathrooms > 1 ? `${listing.bathrooms} baths`:`${listing.bathrooms} bath`}
         </div>
       </div>
     </div>

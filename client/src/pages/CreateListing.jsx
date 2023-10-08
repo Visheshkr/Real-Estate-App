@@ -22,7 +22,7 @@ export default function CreateListing() {
     bedrooms:1,
     bathrooms:1,
     regularPrice:50,
-    discountedPrice:0,
+    discountPrice:0,
     offer:false,
     parking:false,
     furnished:false,
@@ -95,22 +95,22 @@ export default function CreateListing() {
     if(e.target.id==='sale' || e.target.id==='rent'){
       setFormData({
         ...formData,
-        type:e.target.id
-      })
+        type:e.target.id,
+      });
     }
 
     if(e.target.id === 'parking' || e.target.id === 'furnished' ||e.target.id === 'offer'){
       setFormData({
         ...formData,
-        [e.target.id]:e.target.checked
-      })
+        [e.target.id]:e.target.checked,
+      });
     }
 
     if(e.target.type === 'number' || e.target.type ==='text' || e.target.type==='textarea'){
       setFormData({
         ...formData,
-        [e.target.id]:e.target.value
-      })
+        [e.target.id]:e.target.value,
+      });
     }
   };
 
@@ -238,22 +238,26 @@ export default function CreateListing() {
               />
               <div className="flex flex-col items-center">
                 <p>Regular price</p>
-                <span className="text-xs">($ / month)</span>
+                {formData.type === 'rent' && (
+                  <span className='text-xs'>($ / month)</span>
+                )}
               </div>
             </div>
             {formData.offer && (<div className="flex items-center gap-2">
               <input
                 type="number"
-                id="discountedPrice"
+                id="discountPrice"
                 min="0"
                 max="1000000"
                 required
                 className="p-3 border border-gray-300 rounded-lg"
-                onChange={handleChange} value={formData.discountedPrice}
+                onChange={handleChange} value={formData.discountPrice}
               />
               <div className="flex flex-col items-center">
                 <p>Discounted price</p>
-                <span className="text-xs">($ / month)</span>
+                {formData.type === 'rent' && (
+                  <span className='text-xs'>($ / month)</span>
+                )}
               </div>
             </div>)}
             

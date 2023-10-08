@@ -9,7 +9,6 @@ import {
   FaBath,
   FaBed,
   FaChair,
-  FaMapMarkedAlt,
   FaMapMarkerAlt,
   FaParking,
   FaShare,
@@ -49,7 +48,7 @@ export default function Listing() {
     };
     fetchListing();
   }, [params.listingId]);
-
+  // console.log(listing.discountPrice);
   return (
     <main>
       {loading && <p className='text-center my-7 text-2xl'>Loading...</p>}
@@ -92,7 +91,7 @@ export default function Listing() {
             <p className='text-2xl font-semibold'>
               {listing.name} - ${' '}
               {listing.offer
-                ? listing.discountPrice && listing.discountPrice.toLocaleString('en-US')
+                ? listing.discountPrice.toLocaleString('en-US')
                 : listing.regularPrice.toLocaleString('en-US')}
               {listing.type === 'rent' && ' / month'}
             </p>
